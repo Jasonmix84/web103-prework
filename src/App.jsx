@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<ShowCreators />} />
         <Route path="/view/:id" element={<ViewCreator />} />
         <Route path="/add" element={<AddCreator />} />
-        <Route path="/edit/:id" element={<EditCreator />} />
+  <Route path="/edit/:id" element={<EditCreator />} />
       </Routes>
     </Router>
   );

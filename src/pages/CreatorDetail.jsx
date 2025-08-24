@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../client';
 
-const ViewCreator = () => {
+export default function CreatorDetail() {
   const { id } = useParams();
   const [creator, setCreator] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,12 +29,7 @@ const ViewCreator = () => {
       <h1 style={{ marginBottom: '1rem' }}>{creator.name}</h1>
       <img src={creator.imageURL} alt={creator.name} style={{ width: '100%', maxWidth: 300, borderRadius: '8px', marginBottom: '1rem' }} />
       <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>{creator.description}</p>
-      <a href={creator.url} target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', fontWeight: 'bold', display: 'block', marginBottom: '1rem' }}>Visit Website</a>
-      <Link to={`/edit/${id}`}>
-        <button style={{ padding: '0.5rem 1.2rem', fontSize: '1rem', background: '#ffc107', color: '#333', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Edit</button>
-      </Link>
+      <a href={creator.url} target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', fontWeight: 'bold' }}>Visit Website</a>
     </div>
   );
 }
-
-export default ViewCreator
