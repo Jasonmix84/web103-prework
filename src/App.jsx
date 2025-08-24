@@ -9,8 +9,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ViewCreator />} />
-        <Route path="/show" element={<ShowCreators />} />
+        <Route path="/" element={<ShowCreators />} />
+        <Route path="/view/:id" element={<ViewCreator />} />
         <Route path="/add" element={<AddCreator />} />
         <Route path="/edit/:id" element={<EditCreator />} />
       </Routes>
