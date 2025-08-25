@@ -1,25 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './CreatorCard.css';
 
 const CreatorCard = ({ id, name, url, description, imageURL }) => {
+    const navigate = useNavigate();
+    const handleCardClick = (e) => {
+        // Prevent navigation if Edit button or Visit Website is clicked
+        if (e.target.closest('.creator-card-edit-btn') || e.target.closest('.creator-card-link')) return;
+        navigate(`/view/${id}`);
+    };
     return (
-        <div style={{
-            border: '1px solid #ddd',
-            borderRadius: '8px',
-            padding: '1rem',
-            width: '250px',
-            background: '#fff',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-            cursor: 'pointer',
-            transition: 'box-shadow 0.2s',
-            position: 'relative',
-        }}>
-            <img src={imageURL} alt={name} style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '6px', marginBottom: '0.5rem' }} />
-            <h3 style={{ margin: '0.5rem 0' }}>{name}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#555', marginBottom: '0.5rem' }}>{description}</p>
-            <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', fontWeight: 'bold', fontSize: '0.95rem' }}>Visit Website</a>
-            <Link to={`/edit/${id}`}>
-                <button style={{ position: 'absolute', top: 10, right: 10, padding: '0.3rem 0.8rem', fontSize: '0.9rem', background: '#ffc107', color: '#333', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Edit</button>
-            </Link>
+        <div className="creator-card" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+            <img src={imageURL} alt={name} className="creator-card-img" />
+            <h3 className="creator-card-title">{name}</h3>
+            <p className="creator-card-desc">{description}</p>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="creator-card-link">Visit Website</a>
+            <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <button
+                    className="creator-card-edit-btn"
+                    onClick={e => {
+                        e.stopPropagation();
+                        navigate(`/edit/${id}`);
+                    }}
+                >
+                    Edit
+                </button>
+            </div>
         </div>
     );
 }

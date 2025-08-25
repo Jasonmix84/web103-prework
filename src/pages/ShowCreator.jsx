@@ -23,7 +23,7 @@ const ShowCreator = () => {
     <div className="show-creators-container">
       {/* Banner Section */}
       <div className="show-creators-header">
-        <img src={require('../assets/react.svg')} alt="Logo" className="show-creators-logo" />
+        <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBL-KXjQVYTXGNkMjPj7n-XV5c9uDPPfN4cQ&s'} alt="Logo" className="show-creators-logo" />
         <h1 className="show-creators-title">CreatorVerse</h1>
       </div>
 
@@ -36,14 +36,15 @@ const ShowCreator = () => {
       {cards && cards.length > 0 ? (
         <div className="show-creators-cards">
           {cards.map(card => (
-            <CreatorCard
-              key={card.id}
-              id={card.id}
-              name={card.name}
-              url={card.url}
-              description={card.description}
-              imageURL={card.imageURL}
-            />
+            <Link key={card.id} to={`/view/${card.id}`} style={{ textDecoration: 'none' }}>
+              <CreatorCard
+                id={card.id}
+                name={card.name}
+                url={card.url}
+                description={card.description}
+                imageURL={card.imageURL}
+              />
+            </Link>
           ))}
         </div>
       ) : (

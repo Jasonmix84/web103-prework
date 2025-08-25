@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../client';
+import "./CreatorCard.css"
 
 export default function CreatorDetail() {
   const { id } = useParams();

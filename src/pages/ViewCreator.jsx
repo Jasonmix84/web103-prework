@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
+import './ViewCreator.css';
 
 const ViewCreator = () => {
   const { id } = useParams();
   const [creator, setCreator] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCreator = async () => {
@@ -23,16 +25,33 @@ const ViewCreator = () => {
   if (loading) return <div>Loading...</div>;
   if (!creator) return <div>Creator not found.</div>;
 
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this creator?')) {
+      const { error } = await supabase
+        .from('creators')
+        .delete()
+        .eq('id', id);
+      if (!error) {
+        navigate('/');
+      } else {
+        alert('Error deleting creator!');
+      }
+    }
+  };
+
   return (
-    <div style={{ maxWidth: 600, margin: '2rem auto', background: '#f9f9f9', padding: '2rem', borderRadius: '10px' }}>
-      <Link to="/" style={{ textDecoration: 'none', color: '#007bff', marginBottom: '1rem', display: 'inline-block' }}>← Back to Home</Link>
-      <h1 style={{ marginBottom: '1rem' }}>{creator.name}</h1>
-      <img src={creator.imageURL} alt={creator.name} style={{ width: '100%', maxWidth: 300, borderRadius: '8px', marginBottom: '1rem' }} />
-      <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>{creator.description}</p>
-      <a href={creator.url} target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', fontWeight: 'bold', display: 'block', marginBottom: '1rem' }}>Visit Website</a>
-      <Link to={`/edit/${id}`}>
-        <button style={{ padding: '0.5rem 1.2rem', fontSize: '1rem', background: '#ffc107', color: '#333', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Edit</button>
-      </Link>
+    <div className="view-creator-container">
+      <Link to="/" className="view-creator-back">← Back to Home</Link>
+      <h1 className="view-creator-title">{creator.name}</h1>
+      <img src={creator.imageURL} alt={creator.name} className="view-creator-img" />
+      <p className="view-creator-desc">{creator.description}</p>
+      <a href={creator.url} target="_blank" rel="noopener noreferrer" className="view-creator-link">Visit Website</a>
+      <div className="view-creator-btns">
+        <Link to={`/edit/${id}`}>
+          <button className="view-creator-edit-btn">Edit</button>
+        </Link>
+        <button onClick={handleDelete} className="view-creator-delete-btn">Delete</button>
+      </div>
     </div>
   );
 }

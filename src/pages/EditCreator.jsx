@@ -45,47 +45,47 @@ const EditCreator = () => {
 
     if (loading) return <div>Loading...</div>;
 
-    return (
-        <div className="add-creator-container">
-            <Link to="/">
-                <button className="back-btn">← Back to Home</button>
-            </Link>
-            <form className="add-creator-form" onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input
-                    id="name"
-                    type="text"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    required
-                />
-                <label htmlFor="url">URL</label>
-                <input
-                    id="url"
-                    type="url"
-                    value={url}
-                    onChange={e => setUrl(e.target.value)}
-                    required
-                />
-                <label htmlFor="description">Description</label>
-                <textarea
-                    id="description"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                    rows={3}
-                    required
-                />
-                <label htmlFor="imageURL">Image URL</label>
-                <input
-                    id="imageURL"
-                    type="url"
-                    value={imageURL}
-                    onChange={e => setImageURL(e.target.value)}
-                    required
-                />
-                <button type="submit">Confirm</button>
-            </form>
-        </div>
+        return (
+            <div className="add-creator-container">
+                <Link to="/">
+                    <button className="back-btn">← Back to Home</button>
+                </Link>
+                <form className="add-creator-form" onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        required
+                    />
+                    <label htmlFor="url">URL</label>
+                    <input
+                        id="url"
+                        type="url"
+                        value={url}
+                        onChange={e => setUrl(e.target.value)}
+                        required
+                    />
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        id="description"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        rows={3}
+                        required
+                    />
+                    <label htmlFor="imageURL">Image URL</label>
+                    <input
+                        id="imageURL"
+                        type="url"
+                        value={imageURL}
+                        onChange={e => setImageURL(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Confirm</button>
+                </form>
+            </div>
     );
 }
 

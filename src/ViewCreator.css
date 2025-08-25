@@ -1,0 +1,57 @@
+.view-creator-container label {
+  color: #000;
+}
+.view-creator-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+}
+.view-creator-back {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+.view-creator-title {
+  margin-bottom: 1rem;
+}
+.view-creator-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.view-creator-desc {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.view-creator-link {
+  color: #007bff;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+}
+.view-creator-btns {
+  display: flex;
+  gap: 1rem;
+}
+.view-creator-edit-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  background: #ffc107;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.view-creator-delete-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
